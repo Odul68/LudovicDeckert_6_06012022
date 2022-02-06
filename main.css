@@ -1,0 +1,90 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: DM sans;
+}
+
+body {
+  max-width: 1440px;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 2rem;
+}
+
+header #logo {
+  width: 200px;
+  height: 50px;
+}
+
+header h1 {
+  color: #901C1C;
+  size: 36px;
+  margin: 0;
+  font-weight: 400;
+}
+
+#id {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 2rem;
+}
+
+.presentation {
+  width: 24rem;
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.presentation .image {
+  width: 14rem;
+  height: 14rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-clip-path: circle();
+          clip-path: circle();
+}
+
+.presentation h2 {
+  color: #D3573C;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.presentation .photographerLocation {
+  color: #901C1C;
+  margin-bottom: 0.2rem;
+  font-size: 13px;
+}
+
+.presentation .photographerTagLine {
+  font-size: 10px;
+  color: black;
+}
+
+.presentation .photographerPrice {
+  font-size: 9px;
+  color: #757575;
+}
+
+.presentation p {
+  margin: 0;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,266 @@
+
+* {
+  box-sizing: border-box;
+  font-family: DM sans;
+}
+  
+  body{
+    max-width: 1440px;
+    margin: auto;
+  }
+
+  $color-primary: #901C1C;
+  $color-secondary: #D3573C;
+  $color-tertiary: #757575;
+
+header{
+    margin: 2rem;
+}
+
+
+/* Photographer Info section */
+
+
+section{
+    margin: 2rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    border-radius: 18px;
+    background-color: #FAFAFA; 
+    h1{
+    color: $color-secondary;
+    font-weight: 400;
+    font-size: 44px;
+    margin: 2.5rem 0 1.5rem 0;
+    }
+
+    .photographerLocation{
+        color: $color-primary;
+        font-weight: 400;
+        font-size: 24px;
+        margin-bottom: 0;
+    }
+
+    .photographerTagLine{
+        font-weight: 400;
+        font-size: 18px;
+        margin-top: 0.5rem;
+    }
+
+    .contactButton{
+        padding: 1rem 1rem;
+        margin: 5rem 4rem;
+        border-radius: 5px;
+        background-color: $color-primary;
+        font-weight: 700;
+        font-size: 16px;
+        color: white;
+        border: none;
+        height: 55px;
+        text-decoration: none;
+    }
+
+    .contactButton:hover{
+      filter: brightness(110%);
+    }
+
+    .photoId{
+        width: 14rem;
+        height: 14rem;
+        object-fit: cover;
+        clip-path: circle();
+    }
+}
+
+
+/* Dropdown button filter */
+
+
+.filter{
+    margin: 4rem;
+    padding: 0 2rem;
+    display: flex;
+    p{
+        font-weight: 700;
+        font-size: 18px;
+        margin-right: 2rem;
+    }
+}
+
+.dropbtn {
+    background-color: $color-primary;
+    color: white;
+    padding: 20px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    min-width: 160px;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+
+  .fa-angle-down{
+   position: absolute;
+    top: 20px;
+    right: 8px;
+    width: 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.4rem;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {    /* Dropdown Content (Hidden by Default) */
+    display: none;
+    position: absolute;
+    background-color: $color-primary;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 0 0 5px 5px;
+    margin-top: -4px;
+    padding: 0 10px;
+  }
+  
+  .option{
+    color: white;
+    font-weight: 700;
+    padding: 14px;
+    text-decoration: none;
+    display: block;
+    letter-spacing: 1px;
+    border-top: 1px solid white;
+    cursor: pointer;
+  }
+  
+  /* Show the dropdown menu - same class used in JS when clicked */
+  .show {display:block;}
+
+  /* Hides the first option "popularité" */
+  .optionSelected{
+    display: none;
+  }
+
+
+/* Modale Form */
+
+
+.modal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(196,196,196,.4);
+  overflow: auto;
+  .modalContent{
+    position: relative;
+    background-color: $color-secondary;
+    width: 669px;
+    z-index: 1;
+    padding: 2rem;
+    border-radius: 5px;
+    margin: 5% auto;
+    }
+  .fa-times{
+    position: absolute;
+    right: 30px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  h1{
+    color: white;
+    margin-top: 0;
+  }
+  .formData{
+    margin-bottom: 2rem;
+  }
+  .text-control{
+    min-width: 600px;
+    height: 68px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 0.6rem;
+    font-size: 1.5rem;
+  }
+  .text-message{
+    min-width: 600px;
+    height: 170px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 0.6rem;
+    font-size: 1.5rem;
+  }
+  label{
+    font-size: 2rem;
+  }
+  .btn-submit{
+    width: 170px;
+    height: 69px;
+    background-color: $color-primary;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    color: white;
+    font-size: 18px;
+  }
+
+  .formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: #e54858;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: right;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  .formData[data-error-visible="true"]::after {
+    opacity: 1;
+  }
+  .formData[data-error-visible="true"] .text-control {
+    border: 2px solid #e54858;
+  }
+}
+
+
+/* Media part */
+
+
+#media{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .photographerWork{
+    width: 350px;
+    height: 300px;
+    margin: 2rem 2rem 0 2rem;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  .photographerWorkInfo{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2rem 2rem 2rem;
+    font-size: 18px;
+    font-weight: 500;
+    color: $color-primary;
+  }
+  .fa-heart{
+    padding: 0 0.5rem;
+  }
+}
+
+

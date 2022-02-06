@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    font-family: DM sans;
+  }
+  
+  body{
+    max-width: 1440px;
+    margin: auto;
+  }
+
+  $color-primary: #901C1C;
+  $color-secondary: #D3573C;
+  $color-tertiary: #757575;
+
+  a{
+    text-decoration: none;
+  }
+
+  header{
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+
+    #logo{
+        width: 200px;
+        height: 50px;
+      }
+
+      h1{
+        color: $color-primary;
+        size: 36px;
+        margin: 0;
+        font-weight: 400;
+      }
+  }
+  
+  #id{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2rem;
+    }
+
+  .presentation{
+    width: 24rem;
+    text-align: center;
+    margin: 3rem 0;
+
+    .image{
+        width: 14rem;
+        height: 14rem;
+        object-fit: cover;
+        clip-path: circle();
+      }
+
+      h2{
+        color: $color-secondary;
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+      }
+      
+      .photographerLocation{
+        color: $color-primary;
+        margin-bottom: 0.2rem;
+        font-size: 13px;
+      }
+      
+      .photographerTagLine{
+        font-size: 10px;
+        color: black;
+      }
+      
+      .photographerPrice{
+        font-size: 9px;
+        color: $color-tertiary;
+      }
+      
+      p{
+        margin: 0;
+      }
+  }
+  
+  

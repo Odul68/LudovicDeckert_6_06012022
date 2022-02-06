@@ -1,0 +1,11 @@
+{
+  "name": "fisheye",
+  "version": "1.0.0",
+  "description": "Photography website",
+  "main": "index.js",
+  "scripts": {
+    "sass" : "sass --watch ./main.scss:./style.css"
+  },
+  "author": "Ludo",
+  "license": "ISC"
+}

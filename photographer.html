@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FishEye</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="photographer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <script
+    src="https://kit.fontawesome.com/935bc3f66d.js"
+    crossorigin="anonymous"
+  ></script>
+  </head>
+  <body>
+    <header>
+      <a href="index.html"><img src="assets/logo/logo.png" alt="logo" id="logo"></a>
+    </header>
+    <div id="photographerInfo"></div>
+    <div class="filter">
+        <p>Trier par</p>
+        <div class="dropdown">
+            <div id="myBtn">
+              <input class="dropbtn" type="button" role="button" value="Popularité">
+              <span><i class="fas fa-angle-down"></i></span>
+            </div>
+            <ul id="myDropdown" class="dropdown-content" role="listbox"> 
+                <li class="option optionSelected" role="option">Popularité</li>
+                <li class="option" role="option">Date</li>
+                <li class="option" role="option">Titre</li>
+            </ul>
+        </div>
+    </div>
+    </div> 
+    <div class="modal">
+      <div class="modalContent">
+        <div class="modalBody">
+          <span class="closeModal"><i class="fas fa-times"></i></span>
+          <h1>Contactez-moi</h1>
+            <form
+              id="form"
+              name="reserve"
+              action="index.html"
+              method="get"
+              >
+              <div
+                class="formData" id="firstName">
+                <label for="first">Prénom</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="first"
+                  name="first"
+                /><br>
+              </div>
+              <div
+                class="formData" id="lastName">
+                <label for="last">Nom</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"
+                /><br>
+              </div>
+              <div
+                class="formData" id="eMail">
+                <label for="email">E-mail</label><br>
+                <input
+                  class="text-control"
+                  id="email"
+                  name="email"
+                /><br>
+              </div>
+              <div
+                class="formData" id="Message">
+                <label for="message">Message</label><br>
+                <textarea
+                 class="text-message"
+                 id="message"
+                 name="message"
+                ></textarea></br>
+              </div>
+              <input
+                class="btn-submit"
+                type="submit"
+                value="Envoyer"
+              />
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="media"></div>
+  
+
+
+    <script src="photographer.js" type="module"></script>
+  </body>
+</html>
