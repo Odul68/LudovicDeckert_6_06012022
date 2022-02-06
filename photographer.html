@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>FishEye</title>
     <meta charset="UTF-8" />
@@ -21,7 +21,7 @@
         <p>Trier par</p>
         <div class="dropdown">
             <div id="myBtn">
-              <input class="dropbtn" type="button" role="button" value="Popularité">
+              <input class="dropbtn" type="button" value="Popularité">
               <span><i class="fas fa-angle-down"></i></span>
             </div>
             <ul id="myDropdown" class="dropdown-content" role="listbox"> 
@@ -31,18 +31,18 @@
             </ul>
         </div>
     </div>
-    </div> 
     <div class="modal">
       <div class="modalContent">
+        <div id="confirmation"></div>
         <div class="modalBody">
           <span class="closeModal"><i class="fas fa-times"></i></span>
-          <h1>Contactez-moi</h1>
             <form
               id="form"
               name="reserve"
               action="index.html"
               method="get"
               >
+              <h1>Contactez-moi</h1>
               <div
                 class="formData" id="firstName">
                 <label for="first">Prénom</label><br>
@@ -79,7 +79,7 @@
                  class="text-message"
                  id="message"
                  name="message"
-                ></textarea></br>
+                ></textarea>
               </div>
               <input
                 class="btn-submit"

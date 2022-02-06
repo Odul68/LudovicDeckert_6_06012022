@@ -71,10 +71,13 @@ const form = document.getElementById("form");
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const eMail = document.getElementById("email");
+const message = document.getElementById("message");
 
 const firstNameFormData = document.getElementById("firstName");
 const lastNameFormData = document.getElementById("lastName");
 const eMailFormData = document.getElementById("eMail");
+const messageFormData = document.getElementById("Message");
+const confirmation = document.getElementById("confirmation");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -105,46 +108,157 @@ form.addEventListener("submit", (e) => {
   validate();
 });
 
+function validate() {
+  let firstChecked;
+  let lastChecked;
+  let mailChecked;
+  let messageChecked;
+
+
+  if (
+    !firstName.value.match("^[a-z A-Z]*$", "g") ||
+    firstName.value == " " ||
+    firstName.value == null ||
+    firstName.value.length < 2
+  ) {
+    firstNameFormData.setAttribute("data-error-visible", true);
+    firstNameFormData.setAttribute(
+      "data-error",
+      "Veuillez entrer deux caractères minimum"
+    );
+  } else {
+    firstNameFormData.setAttribute("data-error-visible", false);
+    firstNameFormData.setAttribute("data-error", "");
+    firstChecked = true;
+  }
+
+  if (
+    !lastName.value.match("^[a-z A-Z]*$", "g") ||
+    lastName.value == " " ||
+    lastName.value == null ||
+    lastName.value.length < 2
+  ) {
+    lastNameFormData.setAttribute("data-error-visible", true);
+    lastNameFormData.setAttribute(
+      "data-error",
+      "Veuillez entrer deux caractères minimum"
+    );
+  } else {
+    lastNameFormData.setAttribute("data-error-visible", false);
+    lastNameFormData.setAttribute("data-error", "");
+    lastChecked = true;
+  }
+
+  if (
+    !/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/.test(
+      eMail.value
+    )
+  ) {
+    eMailFormData.setAttribute("data-error-visible", true);
+    eMailFormData.setAttribute(
+      "data-error",
+      "Veuillez entrer une adresse email valide"
+    );
+  } else {
+    eMailFormData.setAttribute("data-error-visible", false);
+    eMailFormData.setAttribute("data-error", "");
+    mailChecked = true;
+  }
+
+  if (
+    message.value == '' ||
+    message.value.length < 2
+  ) {
+    messageFormData.setAttribute("data-error-visible", true);
+    messageFormData.setAttribute(
+      "data-error",
+      "Veuillez entrer votre message."
+    );
+  } else {
+    messageFormData.setAttribute("data-error-visible", false);
+    messageFormData.setAttribute("data-error", "");
+    messageChecked = true;
+  }
+
+  // Confirmation message when sent
+  if (
+    firstChecked === true &&
+    lastChecked === true &&
+    mailChecked === true &&
+    messageChecked === true
+  ) {
+    form.style.display = "None";
+    confirmation.innerText = "Merci ! Votre réservation a été reçue";
+    confirmation.style.fontSize = "1.8rem";
+    confirmation.style.color = "white";
+  }
+}
+
 
 // Media list - One const for IMAGES ; One const for VIDEOS 
 
 
-let images = data.media.filter((media)=>{return media.photographerId === Number (urlId.searchParams.get("id"))})
-console.log(media)
+let medias = data.media.filter((media)=>{return media.photographerId === Number (urlId.searchParams.get("id"))})
+console.log(medias)
 
-const generateImage = image => {
+const generateImage = media => {
   return`
     <div class="presentation">
-      <img src="assets/images/${image.image}" class="photographerWork"/>
+      <img src="assets/images/${media.image}" class="photographerWork"/>
         <footer class="photographerWorkInfo">
-          <p class="imagesName">${image.title}</p>
-          <p class="imagesLikes">${image.likes}<i class="fas fa-heart"></i></p>
+          <p class="imagesName">${media.title}</p>
+          <p class="imagesLikes">${media.likes}<i class="fas fa-heart"></i></p>
         </footer>
     </div>`;} 
 
- const generateVideo = image => {
+ const generateVideo = media => {
   return`
     <div class="presentation">
       <video controls autoplay class="photographerWork">
-        <source src="assets/images/${image.video}" type="video/mp4">
+        <source src="assets/images/${media.video}" type="video/mp4">
       </video>
         <footer class="photographerWorkInfo">
-          <p class="imagesName">${image.title}</p>
-          <p class="imagesLikes">${image.likes}<i class="fas fa-heart"></i></p>
+          <p class="imagesName">${media.title}</p>
+          <p class="imagesLikes">${media.likes}<i class="fas fa-heart"></i></p>
         </footer>
     </div>`;} 
 
 
-const displayMedia = (images) => {
+const displayMedia = (medias) => {
     const mediaContainer = document.getElementById("media");
     mediaContainer.innerHTML = "";
-    for(let image of images) {
+    for(let media of medias) {
         const element = document.createElement("div");
-        element.innerHTML = image.hasOwnProperty('image') ? generateImage(image) : generateVideo(image)
+        element.innerHTML = media.hasOwnProperty('image') ? generateImage(media) : generateVideo(media)
         mediaContainer.appendChild(element);
       }
 
 
 };
 
-displayMedia(images); 
+displayMedia(medias); 
+
+
+// Lightbox 
+
+const lightbox = document.createElement('div');
+lightbox.id = 'lightbox'
+document.body.appendChild(lightbox);
+
+const images = document.querySelectorAll('img');
+images.forEach(image => {
+  image.addEventListener('click', e => {
+    lightbox.classList.add('active')
+    const img = document.createElement('img')
+    img.src = image.src
+    while (lightbox.firstChild) {
+      lightbox.removeChild(lightbox.firstChild)
+    }
+    lightbox.appendChild(img)
+  })
+})
+
+lightbox.addEventListener('click', e => {
+  if (e.target !== e.currentTarget) return
+  lightbox.classList.remove('active')
+})

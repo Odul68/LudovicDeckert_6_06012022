@@ -149,7 +149,7 @@ section{
   }
 
 
-/* Modale Form */
+/* Contact Form */
 
 
 .modal{
@@ -177,6 +177,7 @@ section{
     color: white;
     font-size: 2rem;
     cursor: pointer;
+    top: 2.2rem;
   }
   h1{
     color: white;
@@ -217,10 +218,10 @@ section{
 
   .formData[data-error]::after {
     content: attr(data-error);
-    font-size: 0.4em;
-    color: #e54858;
+    font-size: 1.4rem;
+    color: white;
     display: block;
-    margin-top: 7px;
+    margin-top: 16px;
     margin-bottom: 7px;
     text-align: right;
     line-height: 0.3;
@@ -231,12 +232,12 @@ section{
     opacity: 1;
   }
   .formData[data-error-visible="true"] .text-control {
-    border: 2px solid #e54858;
+    border: 2px solid black;
   }
 }
 
 
-/* Media part */
+/* Media Part */
 
 
 #media{
@@ -263,4 +264,27 @@ section{
   }
 }
 
+
+/* Lightbox */
+ 
+
+#lightbox{
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.2);
+  img{
+    width: 600px;
+    height: 600px;
+  }
+}
+
+#lightbox.active{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
