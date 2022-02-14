@@ -269,6 +269,7 @@ section .photoId {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 #media .photographerWorkInfo {
@@ -288,19 +289,104 @@ section .photoId {
   padding: 0 0.5rem;
 }
 
-#lightbox {
+/* Lightbox */
+/*
+#lightbox{
   display: none;
   position: fixed;
   z-index: 100;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0,0,0,0.2);
+  img{
+    width: 600px;
+    height: 600px;
+    object-fit: contain;
+  }
+}
+
+#lightbox.active{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+*/
+#lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  overflow: auto;
 }
 
 #lightbox img {
-  width: 600px;
+  max-width: 600px;
   height: 600px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  /* When HTML works to use this
+    max-width: 100%;
+    height: auto;
+    */
+}
+
+#lightbox .lightboxNext,
+#lightbox .lightboxPrevious {
+  background: url(assets/icons/arrow.svg) center center/100% 100%;
+  width: 30px;
+  height: 48px;
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 11;
+  cursor: pointer;
+}
+
+#lightbox .lightboxPrevious {
+  right: auto;
+  left: 0;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+#lightbox .lightboxClose {
+  background: url(assets/icons/cross.svg);
+  width: 42px;
+  height: 42px;
+  position: fixed;
+  z-index: 11;
+  cursor: pointer;
+  right: 20px;
+  top: 20px;
+}
+
+#lightbox button {
+  border: none;
+  opacity: .9;
+}
+
+#lightbox button:hover {
+  opacity: 1;
+}
+
+#lightbox .lightboxContainer {
+  margin: 4rem 8rem;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #lightbox.active {

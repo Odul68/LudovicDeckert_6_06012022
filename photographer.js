@@ -21,6 +21,7 @@ const displayPhotographerInfo = (photographerInfo) => {
     infoContainer.innerHTML = "";
     for(let photographer of photographerInfo) {
         const element = document.createElement("section");
+        element.classList.add() /* to choose and modify css */
         element.innerHTML = `
         <div class="photographerInfo">
             <h1 class="photographerTitle">${photographer.name}</h1>
@@ -240,6 +241,7 @@ displayMedia(medias);
 
 
 // Lightbox 
+/** 
 
 const lightbox = document.createElement('div');
 lightbox.id = 'lightbox'
@@ -262,3 +264,66 @@ lightbox.addEventListener('click', e => {
   if (e.target !== e.currentTarget) return
   lightbox.classList.remove('active')
 })
+*/
+
+
+
+
+
+
+const lightbox = document.createElement('div');
+
+lightbox.id = 'lightbox'
+lightbox.innerHTML = `
+<button class="lightboxClose">Fermer</button>
+<button class="lightboxNext">Suivant</button>
+<button class="lightboxPrevious">Précédent</button>
+<div class="lightboxContainer">
+<img src="assets/images/${media.image}" class="photographerWork"/>
+<div>
+`;
+document.body.appendChild(lightbox);
+
+const images = document.querySelectorAll('img');
+images.forEach(image => {
+  image.addEventListener('click', e => {
+    lightbox.classList.add('active')
+
+    /**  const img = document.createElement('img')
+    img.src = image.src
+    while (lightbox.firstChild) {
+      lightbox.removeChild(lightbox.firstChild)
+    }
+    lightbox.appendChild(img)*/
+  })
+})
+
+lightbox.addEventListener('click', e => {
+  if (e.target !== e.currentTarget) return
+  lightbox.classList.remove('active')
+})
+
+
+
+
+
+/** 
+const lightboxbg = document.querySelector(".lightbox");
+const lightboxCross = document.getElementsByClassName("lightboxClose");
+const images = document.querySelectorAll('img');
+images.forEach((btn) => btn.addEventListener("click", launchLightbox));
+function launchLightbox() {
+  lightboxbg.style.display = "block";
+}
+window.onclick = function (event) {
+  if (event.target == lightboxbg) {
+    lightboxbg.style.display = "none";
+  }
+};
+function lightboxClose() {
+  lightboxbg.style.display = "none";
+}
+lightboxCross[0].addEventListener("click", lightboxClose);
+*/
+
+
