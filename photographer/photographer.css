@@ -286,6 +286,7 @@ section .photoId {
 }
 
 #media .fa-heart {
+  cursor: pointer;
   padding: 0 0.5rem;
 }
 

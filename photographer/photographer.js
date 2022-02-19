@@ -1,5 +1,5 @@
 
-import data from "./data.js"
+import data from "../data.js"
 
 const urlId = new URL(window.location.href);
 console.log(urlId.searchParams.get("id")); 
@@ -29,7 +29,7 @@ const displayPhotographerInfo = (photographerInfo) => {
             <p class="photographerTagLine">${photographer.tagline}</p> 
         </div>
         <a class="contactButton" href="#">Contactez-moi</a>
-        <img src="assets/photographer_id/${photographer.portrait}" class ="photoId"/>
+        <img src="/assets/photographer_id/${photographer.portrait}" class ="photoId"/>
         `;
         infoContainer.appendChild(element);
     }
@@ -201,11 +201,36 @@ function validate() {
 
 let medias = data.media.filter((media)=>{return media.photographerId === Number (urlId.searchParams.get("id"))})
 console.log(medias)
+/** 
+const lightbox = document.createElement('div');
+lightbox.id = 'lightbox'
+
+const generateLightbox = (initMedia, photographerMedia) => {
+  console.log({photographerMedia})
+  generateLightbox.innerHTML = `
+<button class="lightboxClose">Fermer</button>
+<button class="lightboxNext">Suivant</button>
+<button class="lightboxPrevious">Précédent</button>
+<div class="lightboxContainer">
+<img src="/assets/images/${initMedia.image}" class="photographerWork"/>
+<div>
+`;
+
+document.body.appendChild(lightbox)
+
+
+lightbox.addEventListener('click', e => {
+  if (e.target !== e.currentTarget) return
+  lightbox.classList.remove('active')
+})
+
+} 
+*/
 
 const generateImage = media => {
   return`
     <div class="presentation">
-      <img src="assets/images/${media.image}" class="photographerWork"/>
+      <img src="/assets/images/${media.image}" class="photographerWork"/>
         <footer class="photographerWorkInfo">
           <p class="imagesName">${media.title}</p>
           <p class="imagesLikes">${media.likes}<i class="fas fa-heart"></i></p>
@@ -216,13 +241,20 @@ const generateImage = media => {
   return`
     <div class="presentation">
       <video controls autoplay class="photographerWork">
-        <source src="assets/images/${media.video}" type="video/mp4">
+        <source src="/assets/images/${media.video}" type="video/mp4">
       </video>
         <footer class="photographerWorkInfo">
           <p class="imagesName">${media.title}</p>
-          <p class="imagesLikes">${media.likes}<i class="fas fa-heart"></i></p>
+          <p id="clicks"class="imagesLikes">${media.likes}<i class="fas fa-heart"></i></p>
         </footer>
     </div>`;} 
+
+
+
+
+
+
+
 
 
 const displayMedia = (medias) => {
@@ -231,6 +263,31 @@ const displayMedia = (medias) => {
     for(let media of medias) {
         const element = document.createElement("div");
         element.innerHTML = media.hasOwnProperty('image') ? generateImage(media) : generateVideo(media)
+      /** 
+      element.addEventListener('click', () => {
+
+        generateLightbox(media)
+        lightbox.classList.add('active');
+
+        const nextMediaId = medias.findIndex(item => item.id === media.id) +1; 
+        const previousMediaId = medias.findIndex(item => item.id === media.id) -1;
+
+        const nextButton = document.querySelector('.lightboxNext');
+        const previousButton = document.querySelector('.lightboxPrevious');
+
+        const container = document.querySelector('.lightboxContainer');
+
+        nextButton.addEventListener('click', _ => {
+          if (media.type === "")
+          container.innerHTML = "";
+          container.innerHTML = `<div class="lightboxContainer">
+          <img src="assets/images/${medias[nextMediaId].image}" class="photographerWork"/>
+          </div>`       
+         })
+      })
+      */
+
+
         mediaContainer.appendChild(element);
       }
 
@@ -270,38 +327,6 @@ lightbox.addEventListener('click', e => {
 
 
 
-
-const lightbox = document.createElement('div');
-
-lightbox.id = 'lightbox'
-lightbox.innerHTML = `
-<button class="lightboxClose">Fermer</button>
-<button class="lightboxNext">Suivant</button>
-<button class="lightboxPrevious">Précédent</button>
-<div class="lightboxContainer">
-<img src="assets/images/${media.image}" class="photographerWork"/>
-<div>
-`;
-document.body.appendChild(lightbox);
-
-const images = document.querySelectorAll('img');
-images.forEach(image => {
-  image.addEventListener('click', e => {
-    lightbox.classList.add('active')
-
-    /**  const img = document.createElement('img')
-    img.src = image.src
-    while (lightbox.firstChild) {
-      lightbox.removeChild(lightbox.firstChild)
-    }
-    lightbox.appendChild(img)*/
-  })
-})
-
-lightbox.addEventListener('click', e => {
-  if (e.target !== e.currentTarget) return
-  lightbox.classList.remove('active')
-})
 
 
 
