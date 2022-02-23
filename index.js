@@ -3,7 +3,7 @@ import data from "./data.js"
 const photographers = data.photographers
 
 const displayList = (photographers) => {
-    const idContainer = document.getElementById("id");
+    const idContainer = document.getElementById("cards");
     idContainer.innerHTML = "";
     for(let photographer of photographers) {
         const element = document.createElement("div");

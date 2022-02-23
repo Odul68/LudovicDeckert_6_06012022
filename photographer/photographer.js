@@ -201,18 +201,17 @@ function validate() {
 
 let medias = data.media.filter((media)=>{return media.photographerId === Number (urlId.searchParams.get("id"))})
 console.log(medias)
-/** 
+
 const lightbox = document.createElement('div');
 lightbox.id = 'lightbox'
 
-const generateLightbox = (initMedia, photographerMedia) => {
-  console.log({photographerMedia})
+const generateLightbox = media => {
   generateLightbox.innerHTML = `
 <button class="lightboxClose">Fermer</button>
 <button class="lightboxNext">Suivant</button>
 <button class="lightboxPrevious">Précédent</button>
 <div class="lightboxContainer">
-<img src="/assets/images/${initMedia.image}" class="photographerWork"/>
+<img src="/assets/images/${media.image}" class="photographerWork"/>
 <div>
 `;
 
@@ -225,7 +224,7 @@ lightbox.addEventListener('click', e => {
 })
 
 } 
-*/
+
 
 const generateImage = media => {
   return`
@@ -263,12 +262,14 @@ const displayMedia = (medias) => {
     for(let media of medias) {
         const element = document.createElement("div");
         element.innerHTML = media.hasOwnProperty('image') ? generateImage(media) : generateVideo(media)
-      /** 
+
       element.addEventListener('click', () => {
 
         generateLightbox(media)
+        console.log(media)
         lightbox.classList.add('active');
 
+        /** 
         const nextMediaId = medias.findIndex(item => item.id === media.id) +1; 
         const previousMediaId = medias.findIndex(item => item.id === media.id) -1;
 
@@ -282,10 +283,10 @@ const displayMedia = (medias) => {
           container.innerHTML = "";
           container.innerHTML = `<div class="lightboxContainer">
           <img src="assets/images/${medias[nextMediaId].image}" class="photographerWork"/>
-          </div>`       
-         })
+          </div>`   
+         })  */  
       })
-      */
+
 
 
         mediaContainer.appendChild(element);
