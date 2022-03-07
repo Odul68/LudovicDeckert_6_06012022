@@ -95,34 +95,6 @@ const displayMedia = (medias) => {
       element.addEventListener('click', () => {
         lightbox.classList.add('active');
         generateLightbox(media)
-
-
-        /** 
-        let nextMediaId = medias.findIndex(item => item.id === media.id) +1; 
-        let previousMediaId = medias.findIndex(item => item.id === media.id) -1;
-
-        const nextButton = document.querySelector('.lightboxNext');
-        const previousButton = document.querySelector('.lightboxPrevious');
-
-        const container = document.querySelector('.lightboxContainer');
-
-      
-
-        nextButton.addEventListener('click', _ => {
-            if (media.type === "img")    
-          container.innerHTML = "";
-          container.innerHTML = `<div class="lightboxContainer">
-          <img src="/assets/images/${medias[nextMediaId].image}" class="photographerWork"/>
-          </div>`   
-         })  
-  
-         previousButton.addEventListener('click', _ => {
-            if (media.type === "img")   
-          container.innerHTML = "";
-          container.innerHTML = `<div class="lightboxContainer">
-          <img src="/assets/images/${medias[previousMediaId].image}" class="photographerWork"/>
-          </div>`   
-         })    */
       })    
         mediaContainer.appendChild(element);  
       }
