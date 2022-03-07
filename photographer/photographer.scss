@@ -244,6 +244,7 @@ section{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 6rem;
   .photographerWork{
     width: 350px;
     height: 300px;
@@ -259,6 +260,12 @@ section{
     font-size: 18px;
     font-weight: 500;
     color: $color-primary;
+  }
+  .imagesLikes{
+    display: flex;
+    margin: 1rem 0;
+    justify-content: center;
+
   }
   .fa-heart{
     cursor: pointer;
@@ -316,29 +323,31 @@ section{
   }
   .lightboxNext,
   .lightboxPrevious{
-    background: url(assets/icons/arrow.svg) center center / 100% 100%;
+    background: url(/assets/icons/arrow.svg) center center / 100% 100%;
+    color: $color-primary;
     width: 30px;
     height: 48px;
     position: fixed;
     top: 50%;
-    right: 0;
+    right: 50px;
     z-index: 11;
     cursor: pointer;
   }
   .lightboxPrevious{
     right: auto;
-    left: 0;
+    left: 50px;
     transform: rotate(180deg);
   }
   .lightboxClose{
-    background: url(assets/icons/cross.svg);
+    background: url(/assets/icons/cross.svg);
+    color: $color-primary;
     width: 42px;
     height: 42px;
     position: fixed;
     z-index: 11;
     cursor: pointer;
-    right: 20px;
-    top: 20px;
+    right: 50px;
+    top: 50px;
   }
   button{
     border: none;

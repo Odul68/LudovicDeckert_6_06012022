@@ -14,6 +14,9 @@
   </head>
   <body>
     <header>
+      <div>
+        <button class="btnCounter" type="button">now 0<i class="fas fa-heart"></i></button>
+      </div>
       <a href="/index.html"><img src="/assets/logo/logo.png" alt="logo" id="logo"></a>
     </header>
     <div id="photographerInfo"></div>
@@ -25,9 +28,9 @@
               <span><i class="fas fa-angle-down"></i></span>
             </div>
             <ul id="myDropdown" class="dropdown-content" role="listbox"> 
-                <li class="option optionSelected" role="option">Popularité</li>
-                <li class="option" role="option">Date</li>
-                <li class="option" role="option">Titre</li>
+                <li id="popularity" class="option optionSelected" role="option">Popularité</li>
+                <li id="date" class="option" role="option">Date</li>
+                <li id="title" class="option" role="option">Titre</li>
             </ul>
         </div>
     </div>
@@ -93,5 +96,9 @@
     <div id="media"></div>
     </div>
     <script src="/photographer/photographer.js" type="module"></script>
+    <script src="photographerIntro.js" type="module"></script>
+    <script src="form.js" type="module"></script>
+    <script src="dropDownButton.js" type="module"></script>
+    <script src="likesButton.js" type="module"></script>
   </body>
 </html>
