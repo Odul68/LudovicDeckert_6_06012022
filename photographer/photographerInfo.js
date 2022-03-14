@@ -21,9 +21,9 @@ const displayPhotographerInfo = (photographerInfo) => {
     const infoContainer = document.getElementById("photographerInfo");
     infoContainer.innerHTML = "";
     for(let photographer of photographerInfo) {
-        const element = document.createElement("section");
-        element.classList.add() /* to choose and modify css */
-        element.innerHTML = `
+        const elementMedia = document.createElement("section");
+        /* element.classList.add()  to choose and modify css */
+        elementMedia.innerHTML = `
         <div class="photographerInfo">
             <h1 class="photographerTitle">${photographer.name}</h1>
             <p class="photographerLocation">${photographer.city}, ${photographer.country}</p> 
@@ -32,9 +32,26 @@ const displayPhotographerInfo = (photographerInfo) => {
         <a class="contactButton" href="#">Contactez-moi</a>
         <img src="/assets/photographer_id/${photographer.portrait}" class ="photoId"/>
         `;
-        infoContainer.appendChild(element);
+        infoContainer.appendChild(elementMedia);
     }
+    /**
+     Cannot set properties of null innerHTML
+     
+    const footerInfo = document.getElementById("#footer");
+    footerInfo.innerHTML = "";
+    for(let photographer of photographerInfo) {
+        const elementPrice = document.createElement("section");
+        elementPrice.classList.add(footerInfo)
+        elementPrice.innerHTML = `
+        <div class="photographerLikes">
+            <p class="imagesLikes">${photographer.price}<i class="fas fa-heart"></i></p>
+        </div>
+        `;
+        footerInfo.appendChild(elementPrice);
+    } */
 };
 
 displayPhotographerInfo(photographerInfo);
+
+
 

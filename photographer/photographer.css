@@ -59,6 +59,9 @@ section .contactButton {
   border: none;
   height: 55px;
   text-decoration: none;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
 }
 
 section .contactButton:hover {
@@ -73,6 +76,19 @@ section .photoId {
      object-fit: cover;
   -webkit-clip-path: circle();
           clip-path: circle();
+}
+
+/* not working that way but other way around, to check */
+@media (max-width: 762px) {
+  section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 /* Dropdown button filter */
@@ -149,11 +165,10 @@ section .photoId {
   display: block;
 }
 
-/* Hides the first option "popularité" */
-.optionSelected {
-  display: none;
-}
-
+/* Hides the first option "popularité" 
+  .optionSelected{
+    display: none;
+  }  */
 /* Contact Form */
 .modal {
   display: none;
@@ -301,6 +316,15 @@ section .photoId {
   padding: 0 0.5rem;
 }
 
+@media (max-width: 768px) {
+  #media {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 /* Lightbox */
 /*
 #lightbox{
@@ -338,14 +362,20 @@ section .photoId {
 }
 
 #lightbox img {
-  max-width: 600px;
-  height: 600px;
+  max-width: 1200px;
   -o-object-fit: contain;
      object-fit: contain;
-  /* When HTML works to use this
+  /* To check if better with a fixed size
     max-width: 100%;
     height: auto;
     */
+}
+
+#lightbox video {
+  max-width: 1200px;
+  height: 1200px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 #lightbox .lightboxNext,
@@ -401,6 +431,16 @@ section .photoId {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#lightbox .imagesNameLightbox {
+  font-size: 28px;
+  font-weight: 600;
+  color: #901C1C;
 }
 
 #lightbox.active {

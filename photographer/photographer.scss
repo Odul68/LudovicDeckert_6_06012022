@@ -59,6 +59,7 @@ section{
         border: none;
         height: 55px;
         text-decoration: none;
+        min-width: fit-content;
     }
 
     .contactButton:hover{
@@ -73,6 +74,13 @@ section{
     }
 }
 
+/* not working that way but other way around, to check */
+@media (max-width: 762px) {
+  section{
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 /* Dropdown button filter */
 
@@ -87,7 +95,6 @@ section{
         margin-right: 2rem;
     }
 }
-
 .dropbtn {
     background-color: $color-primary;
     color: white;
@@ -101,22 +108,19 @@ section{
     letter-spacing: 1px;
     text-align: left;
   }
-
   .fa-angle-down{
    position: absolute;
-    top: 20px;
-    right: 8px;
-    width: 20px;
-    cursor: pointer;
-    color: white;
-    font-size: 1.4rem;
+   top: 20px;
+   right: 8px;
+   width: 20px;
+   cursor: pointer;
+   color: white;
+   font-size: 1.4rem;
   }
-
   .dropdown {
     position: relative;
     display: inline-block;
   }
-
   .dropdown-content {    /* Dropdown Content (Hidden by Default) */
     display: none;
     position: absolute;
@@ -128,7 +132,6 @@ section{
     margin-top: -4px;
     padding: 0 10px;
   }
-  
   .option{
     color: white;
     font-weight: 700;
@@ -139,15 +142,14 @@ section{
     border-top: 1px solid white;
     cursor: pointer;
   }
-  
+
   /* Show the dropdown menu - same class used in JS when clicked */
   .show {display:block;}
 
-  /* Hides the first option "popularité" */
+  /* Hides the first option "popularité" 
   .optionSelected{
     display: none;
-  }
-
+  }  */
 
 /* Contact Form */
 
@@ -215,7 +217,6 @@ section{
     color: white;
     font-size: 18px;
   }
-
   .formData[data-error]::after {
     content: attr(data-error);
     font-size: 1.4rem;
@@ -273,6 +274,12 @@ section{
   }
 }
 
+@media (max-width: 768px) {
+  #media{
+    flex-direction: column;
+  }
+}
+
 
 /* Lightbox */
  
@@ -312,14 +319,17 @@ section{
   z-index: 10;
   overflow: auto;
   img{
-    max-width: 600px;
-    height: 600px;
+    max-width: 1200px;
     object-fit: contain;
-    
-    /* When HTML works to use this
+    /* To check if better with a fixed size
     max-width: 100%;
     height: auto;
     */
+  }
+  video{
+    max-width: 1200px;
+    height: 1200px;
+    object-fit: contain;
   }
   .lightboxNext,
   .lightboxPrevious{
@@ -362,11 +372,18 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+  }
+  .imagesNameLightbox{
+    font-size: 28px;
+    font-weight: 600;
+    color: $color-primary;
   }
 }
-
 #lightbox.active{
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+
