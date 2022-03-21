@@ -3,7 +3,6 @@
 import data from "../data.js"
 
 const urlId = new URL(window.location.href);
-console.log(urlId.searchParams.get("id")); 
 
 
 /**
@@ -22,7 +21,7 @@ const displayPhotographerInfo = (photographerInfo) => {
     infoContainer.innerHTML = "";
     for(let photographer of photographerInfo) {
         const elementMedia = document.createElement("section");
-        /* element.classList.add()  to choose and modify css */
+        elementMedia.classList.add('photographerIntro')
         elementMedia.innerHTML = `
         <div class="photographerInfo">
             <h1 class="photographerTitle">${photographer.name}</h1>
@@ -34,21 +33,26 @@ const displayPhotographerInfo = (photographerInfo) => {
         `;
         infoContainer.appendChild(elementMedia);
     }
+
     /**
-     Cannot set properties of null innerHTML
-     
-    const footerInfo = document.getElementById("#footer");
+     * footer 
+     * total likes from photographer.js function
+     *   => to separate it with a different innerHTML ?
+     *   => add id through a const ? 
+     * 
+     * price per day OK 
+     */     
+    const footerInfo = document.getElementById("footer");
     footerInfo.innerHTML = "";
     for(let photographer of photographerInfo) {
         const elementPrice = document.createElement("section");
-        elementPrice.classList.add(footerInfo)
+        elementPrice.classList.add('footerInfo')
         elementPrice.innerHTML = `
-        <div class="photographerLikes">
-            <p class="imagesLikes">${photographer.price}<i class="fas fa-heart"></i></p>
-        </div>
+            <p class="imagesLikes">${photographer.price} <i class="fas fa-heart"></i></p> 
+            <p class="photographerPrice">${photographer.price}€ / jour</p>
         `;
         footerInfo.appendChild(elementPrice);
-    } */
+    } 
 };
 
 displayPhotographerInfo(photographerInfo);

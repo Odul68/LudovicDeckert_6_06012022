@@ -21,7 +21,7 @@ header{
 /* Photographer Info section */
 
 
-section{
+.photographerIntro{
     margin: 2rem 6rem;
     display: flex;
     justify-content: space-between;
@@ -121,7 +121,8 @@ section{
     position: relative;
     display: inline-block;
   }
-  .dropdown-content {    /* Dropdown Content (Hidden by Default) */
+
+  .dropdown-content {      /* Dropdown Content (Hidden by Default) */
     display: none;
     position: absolute;
     background-color: $color-primary;
@@ -143,13 +144,14 @@ section{
     cursor: pointer;
   }
 
-  /* Show the dropdown menu - same class used in JS when clicked */
+  // Show the dropdown menu - same class used in JS when clicked 
   .show {display:block;}
 
   /* Hides the first option "popularité" 
   .optionSelected{
     display: none;
   }  */
+  
 
 /* Contact Form */
 
@@ -283,30 +285,6 @@ section{
 
 /* Lightbox */
  
-/*
-#lightbox{
-  display: none;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.2);
-  img{
-    width: 600px;
-    height: 600px;
-    object-fit: contain;
-  }
-}
-
-#lightbox.active{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-*/
-
 
 #lightbox{
   display: none;
@@ -315,11 +293,11 @@ section{
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(255,255,255,0.9);
   z-index: 10;
   overflow: auto;
   img{
-    max-width: 1200px;
+    max-width: 800px;
     object-fit: contain;
     /* To check if better with a fixed size
     max-width: 100%;
@@ -385,5 +363,25 @@ section{
   justify-content: center;
   align-items: center;
 }
+
+/* Footer */
+
+.footerInfo{
+  position: fixed;
+  bottom: 0;
+  right: 4rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #DB8876;
+  width: 376px;
+  height: 89px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+
+
 
 
