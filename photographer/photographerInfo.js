@@ -41,7 +41,7 @@ const displayPhotographerInfo = (photographerInfo) => {
      *   => add id through a const ? 
      * 
      * price per day OK 
-     */     
+     */    
     const footerInfo = document.getElementById("footer");
     footerInfo.innerHTML = "";
     for(let photographer of photographerInfo) {

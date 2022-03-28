@@ -116,6 +116,13 @@ header{
    cursor: pointer;
    color: white;
    font-size: 1.4rem;
+   transition: 1ms;
+   &.active{ // adds class active in js when clicked on dropBtn to rotate the arrow
+     transform: rotate(180deg);
+     transition: 1ms;
+     top: 20px;
+     right: 16px;
+   }
   }
   .dropdown {
     position: relative;
@@ -145,13 +152,10 @@ header{
   }
 
   // Show the dropdown menu - same class used in JS when clicked 
-  .show {display:block;}
+  .show {
+    display:block;
+  }
 
-  /* Hides the first option "popularité" 
-  .optionSelected{
-    display: none;
-  }  */
-  
 
 /* Contact Form */
 
@@ -264,15 +268,15 @@ header{
     font-weight: 500;
     color: $color-primary;
   }
-  .imagesLikes{
+  .likesCounter{
     display: flex;
-    margin: 1rem 0;
-    justify-content: center;
-
+  }
+  .imagesLikes{
+    margin: auto;
   }
   .fa-heart{
     cursor: pointer;
-    padding: 0 0.5rem;
+    padding: 1rem 0 0 0.5rem;
   }
 }
 
