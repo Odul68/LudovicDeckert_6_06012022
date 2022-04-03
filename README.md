@@ -11,5 +11,7 @@ Forker le repo et finir les 5 tâches suivantes :
 N'utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
 
 ![alt text](assets/printScreens/printScreen1.png)
+![alt text](assets/printScreens/printScreen2.png)
+
 
 
