@@ -37,6 +37,13 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+// Close modal by pressing on the ESC key
+document.addEventListener('keydown', function(e) {
+  let keyCode = e.key;
+  if (keyCode === "Escape") {
+    modalbg.style.display = "none";
+  }});
+
 // Close modal on X spot - event
 modalCross[0].addEventListener("click", closeModal);
 
@@ -45,6 +52,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   validate();
 });
+
 
 function validate() {
   let firstChecked;
