@@ -23,7 +23,6 @@ dynamique en fonction du photographe) :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;■ Dans le cas des vidéos, montrer une image miniature dans la
 galerie.  
 &nbsp;&nbsp;○ Chaque média comprend un titre et un nombre de likes.  
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;■ Lorsque l'utilisateur clique sur l'icône "Like", le nombre de likes
 affiché est incrémenté.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;■ Le nombre de likes total d’un photographe doit correspondre à la
