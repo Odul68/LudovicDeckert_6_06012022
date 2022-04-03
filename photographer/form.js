@@ -1,6 +1,5 @@
 // modal opening and closing - to finish with errors
 
-
 const modalbg = document.querySelector(".modal");
 const modalBtn = document.querySelectorAll(".contactButton");
 const modalCross = document.getElementsByClassName("closeModal");
@@ -25,7 +24,7 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// Close modal anywhere on the page
+// Close modal when clicked anywhere on the page
 window.onclick = function (event) {
   if (event.target == modalbg) {
     modalbg.style.display = "none";
@@ -53,13 +52,12 @@ form.addEventListener("submit", (e) => {
   validate();
 });
 
-
+// Validation function with "if" for each input
 function validate() {
   let firstChecked;
   let lastChecked;
   let mailChecked;
   let messageChecked;
-
 
   if (
     !firstName.value.match("^[a-z A-Z]*$", "g") ||

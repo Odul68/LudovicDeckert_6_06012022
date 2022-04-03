@@ -3,6 +3,8 @@
   <head>
     <title>FishEye</title>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="photographer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,21 +18,27 @@
     <header>
       <a href="/index.html"><img src="/assets/logo/logo.png" alt="logo" id="logo"></a>
     </header>
+
+    <!-- Photographer info card -->
     <div id="photographerInfo"></div>
+
+    <!-- Dropdown button filter medias -->
     <div class="filter">
         <p>Trier par</p>
         <div class="dropdown">
             <div id="myBtn">
-              <input class="dropbtn" type="button" value="Popularité">
+              <input class="dropbtn" type="button" value="Popularité" tabindex="3">
               <span><i id="arrow" class="fas fa-angle-down"></i></span>
             </div>
             <ul id="myDropdown" class="dropdown-content" role="listbox"> 
-                <li id="popularity" class="option optionSelected" role="option">Popularité</li>
-                <li id="date" class="option" role="option">Date</li>
-                <li id="title" class="option" role="option">Titre</li>
+                <li id="popularity" class="option optionSelected" role="option" tabindex="4">Popularité</li>
+                <li id="date" class="option" role="option" tabindex="4">Date</li>
+                <li id="title" class="option" role="option" tabindex="4">Titre</li>
             </ul>
         </div>
     </div> 
+
+    <!-- Form modal Last Name, First Name, Email address and Message -->
     <div class="modal">
       <div class="modalContent">
         <div id="confirmation"></div>
@@ -51,6 +59,7 @@
                   type="text"
                   id="first"
                   name="first"
+                  tabindex="2"
                 /><br>
               </div>
               <div
@@ -61,6 +70,7 @@
                   type="text"
                   id="last"
                   name="last"
+                  tabindex="2"
                 /><br>
               </div>
               <div
@@ -70,6 +80,7 @@
                   class="text-control"
                   id="email"
                   name="email"
+                  tabindex="2"
                 /><br>
               </div>
               <div
@@ -79,19 +90,26 @@
                  class="text-message"
                  id="message"
                  name="message"
+                 tabindex="2"
                 ></textarea>
               </div>
               <input
                 class="btn-submit"
                 type="submit"
                 value="Envoyer"
+                tabindex="2"
               />
           </form>
         </div>
       </div>
     </div>
+
+    <!-- Div container for all medias (images and videos) -->
     <div id="media"></div>
+
+    <!-- Photographer's info with total likes and Price perd day -->
     <footer id="footer"></footer>
+
     <script src="/photographer/photographer.js" type="module"></script>
     <script src="photographerInfo.js" type="module"></script>
     <script src="form.js" type="module"></script>

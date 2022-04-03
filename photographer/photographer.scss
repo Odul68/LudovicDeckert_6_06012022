@@ -74,8 +74,14 @@ header{
     }
 }
 
-/* not working that way but other way around, to check */
+/* Responside design for mobiles */
 @media (max-width: 762px) {
+  .photographerInfo{
+    margin: auto;
+  }
+  .photoId{
+    margin: auto;
+  }
   section{
     display: flex;
     flex-direction: column;
@@ -276,13 +282,22 @@ header{
   }
   .fa-heart{
     cursor: pointer;
-    padding: 1rem 0 0 0.5rem;
+    padding: 1.2rem 0 0 0.5rem;
   }
 }
+
+/* Responsive design medias */
 
 @media (max-width: 768px) {
   #media{
     flex-direction: column;
+    align-content: center;
+  }
+  .photographerWorkInfo{
+    max-width: fit-content;
+    .imagesName{
+      padding-right: 1rem;
+    }
   }
 }
 
@@ -303,10 +318,6 @@ header{
   img{
     max-width: 800px;
     object-fit: contain;
-    /* To check if better with a fixed size
-    max-width: 100%;
-    height: auto;
-    */
   }
   video{
     max-width: 1200px;
@@ -350,7 +361,7 @@ header{
   }
   .lightboxContainer{
     margin: 4rem 8rem;
-    min-height: 100vh;
+    min-height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -362,13 +373,45 @@ header{
     color: $color-primary;
   }
 }
-#lightbox.active{
+#lightbox.active{ /* When clicked on in JS */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Responsive design lightbox medias */
+
+@media (max-width: 800px) {
+  #lightbox{
+    img{
+      max-width: 400px;
+      object-fit: contain;
+    }
+    video{
+      max-width: 500px;
+      height: 500px;
+      object-fit: contain;
+    }
+  }  
+}
+
+@media (max-width: 400px) {
+  #lightbox{
+    img{
+      max-width: 200px;
+      object-fit: contain;
+    }
+    video{
+      max-width: 300px;
+      height: 300px;
+      object-fit: contain;
+    }
+  } 
+}
+
+
 /* Footer */
+
 
 .footerInfo{
   position: fixed;
@@ -383,6 +426,20 @@ header{
   border-radius: 5px;
   font-weight: 500;
   font-size: 24px;
+  .footerTotalLikes{
+    display: flex;
+  }
+  .fa-heart{
+    align-self: center;
+    margin-top: 1.4vh;
+    padding-left: 0.4rem;
+  }
+}
+
+@media (max-width: 762px) {
+  .footerInfo{
+    display: none;
+  }
 }
 
 

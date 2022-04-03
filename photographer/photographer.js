@@ -3,25 +3,39 @@ import data from "../data.js"
 
 const urlId = new URL(window.location.href);
 
-// Media list - Get media from ID
 
+// Media list - Get media from ID
 let medias = data.media.filter((media)=>{return media.photographerId === Number (urlId.searchParams.get("id"))})
 
+
 // to show the dropdown button
+
+
 document.getElementById("myBtn").onclick = function() {myFunction()};
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
   document.getElementById("arrow").classList.toggle("active");
 }
 
-// dropdown button to sort by likes / date / title 
+// dropdown button to sort by likes
 const input = document.querySelector(".dropbtn");
-
+// Sort by popularity (likes)
 document.querySelector("#popularity").addEventListener("click", () =>{
   input.value = "Popularité";
   const sortMedias = medias.sort((a,b) => a.likes - b.likes);
   displayMedia(sortMedias);
 })
+// Sort by popularity when ENTER key pressed
+document.querySelector("#popularity").addEventListener("keyup", (e) =>{
+  e.preventDefault();
+  if(e.keyCode === 13) {
+    input.value = "Popularité";
+    const sortMedias = medias.sort((a,b) => a.likes - b.likes);
+    displayMedia(sortMedias);
+  }  
+})
+
+// Sort by date 
 document.querySelector("#date").addEventListener("click", () =>{
   input.value = "Date";
   const sortMedias = medias.sort(function (x,y){
@@ -31,6 +45,21 @@ document.querySelector("#date").addEventListener("click", () =>{
   })
   displayMedia(sortMedias);
 });
+// Sort by date when ENTER key pressed
+document.querySelector("#date").addEventListener("keyup", (e) =>{
+  e.preventDefault();
+  if(e.keyCode === 13) {
+    input.value = "Date";
+    const sortMedias = medias.sort(function (x,y){
+      let a = new Date(x.date),
+          b = new Date(y.date);
+      return a - b;
+    })
+    displayMedia(sortMedias);
+  } 
+});
+
+// Sort by title (alphabetical order)
 document.querySelector("#title").addEventListener("click", () => {
   input.value = "Titre";
     const sortMedias = medias.sort(function(x, y){
@@ -40,6 +69,19 @@ document.querySelector("#title").addEventListener("click", () => {
     })
     displayMedia(sortMedias);
 }); 
+// Sort by title (alphabetical order) when ENTER key pressed
+document.querySelector("#title").addEventListener("keyup", (e) => {
+  e.preventDefault();
+  if(e.keyCode === 13) {
+    input.value = "Titre";
+    const sortMedias = medias.sort(function(x, y){
+      let a = x.title.toUpperCase(),
+          b = y.title.toUpperCase();
+      return a == b ? 0 : a > b ? 1 : -1;
+    })
+    displayMedia(sortMedias);
+  }
+}); 
 
 
 // Create Div for medias : Images and Videos
@@ -48,13 +90,16 @@ document.querySelector("#title").addEventListener("click", () => {
 const lightbox = document.createElement('div');
 lightbox.id = 'lightbox'
 
-const generateButtons = (media, medias) => {
+
+const generateButtons = (media, medias) => { // Lightbox navigation 
   const lightboxContainer = document.querySelector(".lightboxContainer");
   const nextBtn = document.querySelector(".lightboxNext");
   const prevBtn = document.querySelector(".lightboxPrevious");
   const lastArrayMedia = medias.length - 1;
   let lightboxInitMediaIndex = medias.findIndex(item => item.id === media.id);
 
+
+  // Previous Media on click "PrevBtn" => Arrow 
   prevBtn.addEventListener('click', () => {
     const prev = 
       lightboxInitMediaIndex
@@ -69,11 +114,10 @@ const generateButtons = (media, medias) => {
     <p class="imagesNameLightbox">${medias[prev].title}</p>`;
     lightboxInitMediaIndex = prev;
       })
-
-  prevBtn.addEventListener('keyup',e => {
-    console.log(e);
-    if(e.keycode === 37){
+  // Previous Media on "Next" key pressed
+  document.addEventListener('keyup',e => {
     e.preventDefault()
+    if(e.keyCode === 37){
     const prev = 
       lightboxInitMediaIndex
       ? lightboxInitMediaIndex - 1
@@ -87,15 +131,14 @@ const generateButtons = (media, medias) => {
     <p class="imagesNameLightbox">${medias[prev].title}</p>`;
     lightboxInitMediaIndex = prev;
     };
-  })     
-        
-
+  })      
+  // Next Media on click "NextBtn" => Arrow       
   nextBtn.addEventListener('click', () => {
   const next = 
     lightboxInitMediaIndex === lastArrayMedia 
     ? 0 
     : lightboxInitMediaIndex + 1;
-  const mediaToDisplay = medias[next].image // gets the next picture but not the next "lightbox.innerHTML"
+  const mediaToDisplay = medias[next].image 
   ? `<img src="/assets/images/${medias[next].image}" class="photographerWork"/>`     
   : `<video controls autoplay class="photographerWork">
   <source src="/assets/images/${medias[next].video}" type="video/mp4">
@@ -104,16 +147,15 @@ const generateButtons = (media, medias) => {
   <p class="imagesNameLightbox">${medias[next].title}</p>`;
   lightboxInitMediaIndex = next;
   })
-
-  nextBtn.addEventListener('keyup', e => {
-    console.log(e);
-    if(e.keycode === 39)
+  // Next Media on "Previous" key pressed 
+  document.addEventListener('keyup', e => {
     e.preventDefault();
-    const next = 
+    if(e.keyCode === 39) {
+      const next = 
       lightboxInitMediaIndex === lastArrayMedia 
       ? 0 
       : lightboxInitMediaIndex + 1;
-    const mediaToDisplay = medias[next].image // gets the next picture but not the next "lightbox.innerHTML"
+    const mediaToDisplay = medias[next].image 
     ? `<img src="/assets/images/${medias[next].image}" class="photographerWork"/>`     
     : `<video controls autoplay class="photographerWork">
     <source src="/assets/images/${medias[next].video}" type="video/mp4">
@@ -121,8 +163,8 @@ const generateButtons = (media, medias) => {
     lightboxContainer.innerHTML =  `${mediaToDisplay}
     <p class="imagesNameLightbox">${medias[next].title}</p>`;
     lightboxInitMediaIndex = next;
-    })
-
+    }
+});
 }
 
 
@@ -131,7 +173,7 @@ const generateButtons = (media, medias) => {
 
 const generateLightbox = (media, medias) => {
   document.body.appendChild(lightbox)
-  const mediaType = media.image 
+  const mediaType = media.image // If media = image THEN image IF NOT THEN video
   ? `<img src="/assets/images/${media.image}" class="photographerWork"/>`     
   : `<video controls autoplay class="photographerWork">
   <source src="/assets/images/${media.video}" type="video/mp4">
@@ -150,21 +192,27 @@ const closeBtn = document.querySelector(".lightboxClose");
 closeBtn.addEventListener('click', () => {
   return lightbox.classList.remove('active')
 })
+// Close lightbox by pressing on the ESC key
+document.addEventListener('keydown', function(e) {
+  let keyCode = e.key;
+  if (keyCode === "Escape") {
+    lightbox.classList.remove('active');
+  }});
 generateButtons(media, medias);
 } 
 
 
-// one function per media type
+// one function per media type to get it from the data.js file 
 
 
 function generateImage(media) {
   return `
     <div class="presentation">
-      <img src="/assets/images/${media.image}" class="photographerWork"/>
+      <img src="/assets/images/${media.image}" class="photographerWork" tabindex="5"/>
         <footer class="photographerWorkInfo">
           <p class="imagesName">${media.title}</p>
           <div class="likesCounter">
-          <p id="imageLikes${media.id}" class="imagesLikes">${media.likes}</p><i id="btnCounter${media.id}" class="fas fa-heart"></i>
+          <p id="imageLikes${media.id}" class="imagesLikes">${media.likes}</p><i id="btnCounter${media.id}" class="fas fa-heart" tabindex="5"></i>
           </div>
         </footer>
     </div>`;
@@ -172,47 +220,73 @@ function generateImage(media) {
  function generateVideo(media) {
   return `
     <div class="presentation">
-      <video controls autoplay class="photographerWork">
+      <video controls autoplay class="photographerWork" tabindex="5 ">
         <source src="/assets/images/${media.video}" type="video/mp4">
       </video>
         <footer class="photographerWorkInfo">
           <p class="imagesName">${media.title}</p>
           <div class="likesCounter">
-          <p id="imageLikes${media.id}" class="imagesLikes">${media.likes}</p><i id="btnCounter${media.id}"class="fas fa-heart"></i>
+          <p id="imageLikes${media.id}" class="imagesLikes">${media.likes}</p><i id="btnCounter${media.id}"class="fas fa-heart" tabindex="5"></i>
           </div>
         </footer>
     </div>`;
 } 
 
+
  // likes counting function 
+
 
 const generateCounters = (media) => {
 
 let likesButton = document.querySelector(`#btnCounter${media.id}`); 
 let imageCount = document.querySelector(`#imageLikes${media.id}`);
 
-let count = media.likes;
+let count = media.likes; // Original number of likes per media
 
-    likesButton.addEventListener('click', () =>{ 
+    likesButton.addEventListener('click', (e) =>{
+        e.stopPropagation(); 
         count +=1;
         imageCount.innerHTML = ``;
-        imageCount.innerHTML = `<p id="imageLikes${media.id}" class="imagesLikes">${count}</p>`;
+        imageCount.innerHTML = count;
+        updateTotal();
     });
 
-    Array.prototype.total = function (){
-      let t = 0;
-      for (let i = 0; i < this.length; i++) {
-        t += this[i]
+    // adds a like when ENTER key pressed
+    likesButton.addEventListener('keyup', (e) =>{
+      e.stopPropagation(); // Makes the heart clickable without opening the lightbox 
+      if(e.keyCode === 13) {
+        count +=1;
+        imageCount.innerHTML = ``;
+        imageCount.innerHTML = count;
+        updateTotal();
       }
-      return t
-    }
-    /** 
-    const totalLikes = count.total();
-    console.log(totalLikes);*/
+  });
   };
+
+  // Total likes function 
+  Array.prototype.total = function (){
+    let t = 0;
+    for (let i = 0; i < this.length; i++) {
+      if(typeof this [i] !== 'number') {
+        t += 0;
+        continue;
+      }
+      t += this[i];
+    }
+    return t;
+  }
+  
+  export const updateTotal = () => { // export in the photographerInfo.js file where the HTML is
+    const html = document.querySelector(".imagesLikesTotal");
+    const additionLikes = document.querySelectorAll(".imagesLikes");
+    html.innerHTML = "";
+    const counts = [...additionLikes].map((item) => Number(item.innerHTML)).total();
+    html.innerHTML = counts;
+  }
 
 
 // display media according to type
+
  
 const displayMedia = (medias) => {
     const mediaContainer = document.getElementById("media");
@@ -226,12 +300,19 @@ const displayMedia = (medias) => {
          ? generateImage(media) 
          : generateVideo(media)
 
-      // To change so that it's separated from the likes clicking button 
-
-        element.addEventListener('click', () => {
-        lightbox.classList.add('active');
-        generateLightbox(media, medias);
+        // Opens lightbox on click
+        element.addEventListener('click', () => { 
+        lightbox.classList.add('active');  
+        generateLightbox(media, medias);     
       })   
+      // Opens lightbox when ENTER key pressed
+      element.addEventListener("keyup", (e) => {
+        e.preventDefault();
+        if (e.keyCode === 13) {
+          lightbox.classList.add('active');
+          generateLightbox(media, medias);
+        }
+      })
       mediaContainer.appendChild(element); 
       generateCounters(media);
       }

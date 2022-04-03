@@ -77,8 +77,14 @@ header {
           clip-path: circle();
 }
 
-/* not working that way but other way around, to check */
+/* Responside design for mobiles */
 @media (max-width: 762px) {
+  .photographerInfo {
+    margin: auto;
+  }
+  .photoId {
+    margin: auto;
+  }
   section {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -318,15 +324,26 @@ header {
 
 #media .fa-heart {
   cursor: pointer;
-  padding: 1rem 0 0 0.5rem;
+  padding: 1.2rem 0 0 0.5rem;
 }
 
+/* Responsive design medias */
 @media (max-width: 768px) {
   #media {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    -ms-flex-line-pack: center;
+        align-content: center;
+  }
+  .photographerWorkInfo {
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+  }
+  .photographerWorkInfo .imagesName {
+    padding-right: 1rem;
   }
 }
 
@@ -347,10 +364,6 @@ header {
   max-width: 800px;
   -o-object-fit: contain;
      object-fit: contain;
-  /* To check if better with a fixed size
-    max-width: 100%;
-    height: auto;
-    */
 }
 
 #lightbox video {
@@ -426,6 +439,7 @@ header {
 }
 
 #lightbox.active {
+  /* When clicked on in JS */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -435,6 +449,35 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+/* Responsive design lightbox medias */
+@media (max-width: 800px) {
+  #lightbox img {
+    max-width: 400px;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  #lightbox video {
+    max-width: 500px;
+    height: 500px;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+}
+
+@media (max-width: 400px) {
+  #lightbox img {
+    max-width: 200px;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  #lightbox video {
+    max-width: 300px;
+    height: 300px;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
 }
 
 /* Footer */
@@ -455,5 +498,25 @@ header {
   border-radius: 5px;
   font-weight: 500;
   font-size: 24px;
+}
+
+.footerInfo .footerTotalLikes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.footerInfo .fa-heart {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-top: 1.4vh;
+  padding-left: 0.4rem;
+}
+
+@media (max-width: 762px) {
+  .footerInfo {
+    display: none;
+  }
 }
 /*# sourceMappingURL=photographer.css.map */

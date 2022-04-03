@@ -33,7 +33,9 @@
         font-weight: 400;
       }
   }
-  
+
+/* Photographer cards display */
+
   #cards{
     display: flex;
     flex-wrap: wrap;
@@ -80,10 +82,19 @@
       }
   }
 
-@media (max-width: 768px) {
-  #cards{
-    flex-direction: column;
+/* Responsive design mobile */
+
+  @media (max-width: 840px) {
+    h1{
+      display: none;
     }
-}
+    #cards{
+      flex-direction: column;
+      .presentation{
+        margin-right: auto;
+        margin-left: auto;
+      }
+      }
+  }
   
   

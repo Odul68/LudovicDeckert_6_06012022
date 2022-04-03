@@ -1,6 +1,7 @@
 
 
 import data from "../data.js"
+import { updateTotal } from "./photographer.js";
 
 const urlId = new URL(window.location.href);
 
@@ -10,12 +11,13 @@ const urlId = new URL(window.location.href);
 THEN => select media ID and show informations
  */
 
-
-// Photographer information - filter photographer id with wht url id 
+// Photographer information - filter photographer id with url id 
 
 let photographerInfo = data.photographers.filter((photographers)=>{return photographers.id === Number (urlId.searchParams.get("id"))})
 console.log(photographerInfo)
 
+
+// Display photographer's info from "data.js" and create HTML
 const displayPhotographerInfo = (photographerInfo) => {
     const infoContainer = document.getElementById("photographerInfo");
     infoContainer.innerHTML = "";
@@ -28,7 +30,7 @@ const displayPhotographerInfo = (photographerInfo) => {
             <p class="photographerLocation">${photographer.city}, ${photographer.country}</p> 
             <p class="photographerTagLine">${photographer.tagline}</p> 
         </div>
-        <a class="contactButton" href="#">Contactez-moi</a>
+        <a class="contactButton" href="#" tabindex="2">Contactez-moi</a>
         <img src="/assets/photographer_id/${photographer.portrait}" class ="photoId"/>
         `;
         infoContainer.appendChild(elementMedia);
@@ -36,11 +38,9 @@ const displayPhotographerInfo = (photographerInfo) => {
 
     /**
      * footer 
-     * total likes from photographer.js function
-     *   => to separate it with a different innerHTML ?
-     *   => add id through a const ? 
+     * => total likes from photographer.js function
+     * => price per day from data.js
      * 
-     * price per day OK 
      */    
     const footerInfo = document.getElementById("footer");
     footerInfo.innerHTML = "";
@@ -48,10 +48,14 @@ const displayPhotographerInfo = (photographerInfo) => {
         const elementPrice = document.createElement("section");
         elementPrice.classList.add('footerInfo')
         elementPrice.innerHTML = `
-            <p class="imagesLikes">${photographer.price} <i class="fas fa-heart"></i></p> 
+            <div class="footerTotalLikes">
+            <p class="imagesLikesTotal">0</p> 
+            <i class="fas fa-heart"></i>
+            </div>
             <p class="photographerPrice">${photographer.price}€ / jour</p>
         `;
         footerInfo.appendChild(elementPrice);
+        updateTotal();
     } 
 };
 

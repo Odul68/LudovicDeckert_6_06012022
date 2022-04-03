@@ -2,6 +2,7 @@ import data from "./data.js"
 
 const photographers = data.photographers
 
+// Get info from "data.js" for each photographer card 
 const displayList = (photographers) => {
     const idContainer = document.getElementById("cards");
     idContainer.innerHTML = "";
