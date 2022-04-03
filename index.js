@@ -11,7 +11,7 @@ const displayList = (photographers) => {
         element.innerHTML = `
     <a href="/photographer/photographer.html?id=${photographer.id}">
         <div class="presentation">
-            <img src="assets/photographer_id/${photographer.portrait}" class="image"/>
+            <img src="assets/photographer_id/${photographer.portrait}" class="image" alt="${photographer.name}"/>
             <h2 class="photographerTitle">${photographer.name}</h2>
             <p class="photographerLocation">${photographer.city}, ${photographer.country}</p> 
             <p class="photographerTagLine">${photographer.tagline}</p> 

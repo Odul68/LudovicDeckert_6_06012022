@@ -208,7 +208,7 @@ generateButtons(media, medias);
 function generateImage(media) {
   return `
     <div class="presentation">
-      <img src="/assets/images/${media.image}" class="photographerWork" tabindex="5"/>
+      <img src="/assets/images/${media.image}" class="photographerWork" alt="${media.title}" tabindex="5"/>
         <footer class="photographerWorkInfo">
           <p class="imagesName">${media.title}</p>
           <div class="likesCounter">
@@ -220,7 +220,7 @@ function generateImage(media) {
  function generateVideo(media) {
   return `
     <div class="presentation">
-      <video controls autoplay class="photographerWork" tabindex="5 ">
+      <video controls autoplay class="photographerWork" alt="${media.title}" tabindex="5 ">
         <source src="/assets/images/${media.video}" type="video/mp4">
       </video>
         <footer class="photographerWorkInfo">

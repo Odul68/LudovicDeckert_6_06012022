@@ -31,7 +31,7 @@ const displayPhotographerInfo = (photographerInfo) => {
             <p class="photographerTagLine">${photographer.tagline}</p> 
         </div>
         <a class="contactButton" href="#" tabindex="2">Contactez-moi</a>
-        <img src="/assets/photographer_id/${photographer.portrait}" class ="photoId"/>
+        <img src="/assets/photographer_id/${photographer.portrait}" class ="photoId" alt="${photographer.name}"/>
         `;
         infoContainer.appendChild(elementMedia);
     }
