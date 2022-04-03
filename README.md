@@ -1,10 +1,11 @@
 # Projet Fisheye - OpenClassrooms
 
-Objectif :
+## Objectif :  
 Leur site est obsolète et a besoin d'être remanié.
 "Notre site a été construit il y a plus de dix ans, et nous n'avons pas eu l'occasion de
 le mettre à jour jusqu'à présent. Nous venons de lever des fonds et nous aimerions
-que votre équipe le transforme d'un site statique à un site dynamique".
+que votre équipe le transforme d'un site statique à un site dynamique".    
+
 Prototype des fonctionnalités :
 Nous devons créer les pages suivantes pour le prototype :
 ● Page d'accueil :
