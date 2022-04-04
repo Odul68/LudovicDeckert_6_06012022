@@ -1,5 +1,5 @@
 
-import data from "../data.js"
+import data from "data.js"
 
 const urlId = new URL(window.location.href);
 
