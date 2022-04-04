@@ -1,5 +1,5 @@
 
-import data from "data.js"
+import data from "../data.js"
 
 const urlId = new URL(window.location.href);
 
@@ -106,9 +106,9 @@ const generateButtons = (media, medias) => { // Lightbox navigation
       ? lightboxInitMediaIndex - 1
       : lastArrayMedia;
     const mediaToDisplay = medias[prev].image 
-    ? `<img src="/assets/images/${medias[prev].image}" class="photographerWork"/>`
+    ? `<img src="assets/images/${medias[prev].image}" class="photographerWork"/>`
     : `<video controls autoplay class="photographerWork">
-    <source src="/assets/images/${medias[prev].video}" type="video/mp4">
+    <source src="assets/images/${medias[prev].video}" type="video/mp4">
     </video>`;
     lightboxContainer.innerHTML = `${mediaToDisplay}
     <p class="imagesNameLightbox">${medias[prev].title}</p>`;
@@ -123,9 +123,9 @@ const generateButtons = (media, medias) => { // Lightbox navigation
       ? lightboxInitMediaIndex - 1
       : lastArrayMedia;
     const mediaToDisplay = medias[prev].image 
-    ? `<img src="/assets/images/${medias[prev].image}" class="photographerWork"/>`
+    ? `<img src="assets/images/${medias[prev].image}" class="photographerWork"/>`
     : `<video controls autoplay class="photographerWork">
-    <source src="/assets/images/${medias[prev].video}" type="video/mp4">
+    <source src="assets/images/${medias[prev].video}" type="video/mp4">
     </video>`;
     lightboxContainer.innerHTML = `${mediaToDisplay}
     <p class="imagesNameLightbox">${medias[prev].title}</p>`;
@@ -139,9 +139,9 @@ const generateButtons = (media, medias) => { // Lightbox navigation
     ? 0 
     : lightboxInitMediaIndex + 1;
   const mediaToDisplay = medias[next].image 
-  ? `<img src="/assets/images/${medias[next].image}" class="photographerWork"/>`     
+  ? `<img src="assets/images/${medias[next].image}" class="photographerWork"/>`     
   : `<video controls autoplay class="photographerWork">
-  <source src="/assets/images/${medias[next].video}" type="video/mp4">
+  <source src="assets/images/${medias[next].video}" type="video/mp4">
   </video>`;
   lightboxContainer.innerHTML =  `${mediaToDisplay}
   <p class="imagesNameLightbox">${medias[next].title}</p>`;
@@ -156,9 +156,9 @@ const generateButtons = (media, medias) => { // Lightbox navigation
       ? 0 
       : lightboxInitMediaIndex + 1;
     const mediaToDisplay = medias[next].image 
-    ? `<img src="/assets/images/${medias[next].image}" class="photographerWork"/>`     
+    ? `<img src="assets/images/${medias[next].image}" class="photographerWork"/>`     
     : `<video controls autoplay class="photographerWork">
-    <source src="/assets/images/${medias[next].video}" type="video/mp4">
+    <source src="assets/images/${medias[next].video}" type="video/mp4">
     </video>`;
     lightboxContainer.innerHTML =  `${mediaToDisplay}
     <p class="imagesNameLightbox">${medias[next].title}</p>`;
@@ -174,9 +174,9 @@ const generateButtons = (media, medias) => { // Lightbox navigation
 const generateLightbox = (media, medias) => {
   document.body.appendChild(lightbox)
   const mediaType = media.image // If media = image THEN image IF NOT THEN video
-  ? `<img src="/assets/images/${media.image}" class="photographerWork"/>`     
+  ? `<img src="assets/images/${media.image}" class="photographerWork"/>`     
   : `<video controls autoplay class="photographerWork">
-  <source src="/assets/images/${media.video}" type="video/mp4">
+  <source src="assets/images/${media.video}" type="video/mp4">
   </video>`;
   lightbox.innerHTML = `
 <button class="lightboxClose"></button>
@@ -208,7 +208,7 @@ generateButtons(media, medias);
 function generateImage(media) {
   return `
     <div class="presentation">
-      <img src="/assets/images/${media.image}" class="photographerWork" alt="${media.title}" tabindex="5"/>
+      <img src="assets/images/${media.image}" class="photographerWork" alt="${media.title}" tabindex="5"/>
         <footer class="photographerWorkInfo">
           <p class="imagesName">${media.title}</p>
           <div class="likesCounter">
@@ -221,7 +221,7 @@ function generateImage(media) {
   return `
     <div class="presentation">
       <video controls autoplay class="photographerWork" alt="${media.title}" tabindex="5 ">
-        <source src="/assets/images/${media.video}" type="video/mp4">
+        <source src="assets/images/${media.video}" type="video/mp4">
       </video>
         <footer class="photographerWorkInfo">
           <p class="imagesName">${media.title}</p>
