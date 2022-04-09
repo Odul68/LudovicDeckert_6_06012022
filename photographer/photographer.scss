@@ -326,7 +326,7 @@ header{
   }
   .lightboxNext,
   .lightboxPrevious{
-    background: url(/assets/icons/arrow.svg) center center / 100% 100%;
+    background: url(../assets/icons/arrow.svg) center center / 100% 100%;
     color: $color-primary;
     width: 30px;
     height: 48px;
@@ -342,7 +342,7 @@ header{
     transform: rotate(180deg);
   }
   .lightboxClose{
-    background: url(/assets/icons/cross.svg);
+    background: url(../assets/icons/cross.svg);
     color: $color-primary;
     width: 42px;
     height: 42px;
